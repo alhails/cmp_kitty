@@ -33,6 +33,7 @@ return {
     match_ip_addrs = true,
     match_urls = { "https?" },
     match_uuids = true,
+    match_k8s = true,
 
     --- filesystem
     match_directories = true,
