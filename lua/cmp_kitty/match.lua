@@ -159,6 +159,13 @@ function Match:uuid(obj)
     end
 end
 
+function Match:k8s(obj)
+    if obj.label:match("^[%w-]+") ~= nil then
+        obj.kind = cmp.lsp.CompletionItemKind.Text
+        return obj
+    end
+end
+
 function Match:directory(obj)
     if
         obj.label:match("^~/[%w_/-]+/?$") ~= nil
@@ -247,6 +254,7 @@ function Match:match_computing(obj)
     return (self.config.match_emails and self:email(obj))
         or (self.config.match_ip_addrs and self:ip(obj))
         or (self.config.match_uuids and self:uuid(obj))
+        or (self.config.match_k8s and self:k8s(obj))
 end
 
 function Match:match(obj)
