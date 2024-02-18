@@ -160,7 +160,7 @@ function Match:uuid(obj)
 end
 
 function Match:k8s(obj)
-    if obj.label:match("^[%w-]+") ~= nil then
+    if obj.label:match("^[a-z0-9-]+") ~= nil then
         obj.kind = cmp.lsp.CompletionItemKind.Text
         return obj
     end
